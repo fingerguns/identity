@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rommy Ghaly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f0e8;
+        --field: #1c1814;
+        --text: #1a1a1a;
+        --muted: #767676;
+        --rule: #d5cfc4;
+        --link: #1a1a1a;
+        --link-hover: #444444;
+        --max: 32rem;
+      }
+
+      [data-theme="dark"] {
+        --bg: #1e1a16;
+        --field: #0a0907;
+        --text: #e8e3da;
+        --muted: #7a7268;
+        --rule: #2e2a24;
+        --link: #e8e3da;
+        --link-hover: #b8b0a4;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 106%;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 1.5rem);
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--field);
+        font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+        font-synthesis: none;
+      }
+
+      main {
+        width: 100%;
+        max-width: var(--max);
+        background: var(--bg);
+        border: 1px solid var(--rule);
+        padding: clamp(2rem, 5vw, 3rem) clamp(1.75rem, 5vw, 2.75rem);
+      }
+
+      .site-title {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-size: clamp(2.25rem, 6vw, 3.375rem);
+        font-weight: 300;
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        margin: 0 0 0.15em;
+        text-align: center;
+      }
+
+      .hr {
+        border: 0;
+        height: 1px;
+        background: var(--rule);
+        margin: 1.5rem 0 0;
+      }
+
+      .link-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .link-list li {
+        border-bottom: 1px solid var(--rule);
+        margin: 0;
+        padding: 0;
+      }
+
+      .link-list a {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding: 0.85rem 0;
+        color: var(--link);
+        text-decoration: none;
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 400;
+        font-size: 0.95rem;
+        transition: color 0.15s ease;
+      }
+
+      .link-list a:hover {
+        color: var(--link-hover);
+      }
+
+      .link-cat {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .link-at {
+        color: var(--muted);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.85rem;
+        padding: 0 0.75rem;
+      }
+
+      .link-name {
+        text-align: right;
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 1.25rem;
+          align-items: center;
+        }
+
+        main {
+          padding: 1.75rem 1.5rem;
+        }
+      }
+    </style>
+    <script>
+      (function () {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1 class="site-title">Rommy Ghaly</h1>
+      <hr class="hr" />
+
+      <ul class="link-list">
+        <li>
+          <a href="https://rommy.blog" target="_blank" rel="noopener noreferrer">
+            <span class="link-cat">Writing</span>
+            <span class="link-at">@</span>
+            <span class="link-name">rommy.blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://rommy.gha.ly" target="_blank" rel="noopener noreferrer">
+            <span class="link-cat">Photography</span>
+            <span class="link-at">@</span>
+            <span class="link-name">rommy.gha.ly</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/rommyghaly" target="_blank" rel="noopener noreferrer">
+            <span class="link-cat">Work</span>
+            <span class="link-at">@</span>
+            <span class="link-name">LinkedIn</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/rommyghaly" target="_blank" rel="noopener noreferrer">
+            <span class="link-cat">Code</span>
+            <span class="link-at">@</span>
+            <span class="link-name">GitHub</span>
+          </a>
+        </li>
+      </ul>
+
+    </main>
+  </body>
+</html>
