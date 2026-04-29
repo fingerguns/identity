@@ -84,7 +84,18 @@
         text-align: center;
         line-height: 1.8;
         margin: 0;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .site-subtitle a {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+
+      .site-subtitle a:hover {
+        color: var(--link-hover);
       }
 
       .hr {
@@ -164,7 +175,7 @@
   <body>
     <main>
       <h1 class="site-title">Rommy Ghaly</h1>
-      <p class="site-subtitle">Brooklyn, NY<br>rommy@gha.ly</p>
+      <p class="site-subtitle">Brooklyn, NY<br><a href="mailto:rommy@gha.ly">rommy@gha.ly</a></p>
       <hr class="hr" />
 
       <ul class="link-list">
