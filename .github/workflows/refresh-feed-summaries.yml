@@ -1,0 +1,44 @@
+name: Refresh feed summaries
+
+# Rebuilds summaries.json from Hacker News + Reddit. Optional:
+# add repo secret OPENAI_API_KEY for synthesized prose; otherwise the
+# builder falls back to headline-derived copy.
+on:
+  schedule:
+    - cron: "0 13 * * *" # ~08:00 Eastern (DST); adjust as you like
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed-summaries
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fetch feeds and write summaries.json
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4o-mini
+        run: node scripts/build-feed-summaries.mjs
+
+      - name: Commit and push when summaries change
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add summaries.json
+          if git diff --staged --quiet; then
+            echo "No summary changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh summaries.json from HN and Reddit"
+          git push
