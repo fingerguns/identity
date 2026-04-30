@@ -154,6 +154,26 @@
         text-align: right;
       }
 
+      .qr-section {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .qr-label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.62rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0;
+      }
+
       @media (max-width: 480px) {
         body {
           padding: 1.25rem;
@@ -175,7 +195,7 @@
   <body>
     <main>
       <h1 class="site-title">Rommy Ghaly</h1>
-      <p class="site-subtitle">Brooklyn, NY<br><a href="mailto:rommy@gha.ly">rommy@gha.ly</a></p>
+      <p class="site-subtitle">Brooklyn, NY</p>
       <hr class="hr" />
 
       <ul class="link-list">
@@ -209,6 +229,45 @@
         </li>
       </ul>
 
+      <div class="qr-section">
+        <canvas id="qr-canvas"></canvas>
+        <p class="qr-label">Scan to save contact</p>
+      </div>
+
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+      (function () {
+        var vcard = [
+          'BEGIN:VCARD',
+          'VERSION:4.0',
+          'FN:Rommy Ghaly',
+          'NICKNAME:Rommy',
+          'BDAY:19780629',
+          'EMAIL;TYPE=work:rommy@gha.ly',
+          'TEL;TYPE=CELL:+19175144231',
+          'URL:https://rommy.blog',
+          'URL:https://rommy.gha.ly',
+          'ADR;TYPE=HOME:;Apt 2;107 Lefferts Place;Brooklyn;NY;11238;USA',
+          'ORG:CircleCI',
+          'TITLE:VP\\, Data',
+          'IMPP;X-SERVICE-TYPE=Bluesky:https://bsky.app/profile/rommy.nyc',
+          'IMPP;X-SERVICE-TYPE=Signal:signal:@rommy.78',
+          'SOCIALPROFILE;TYPE=linkedin:http://www.linkedin.com/in/rommyghaly',
+          'REV:20260430T000000Z',
+          'END:VCARD'
+        ].join('\r\n');
+
+        var style = getComputedStyle(document.documentElement);
+        var darkColor = style.getPropertyValue('--text').trim() || '#1a1a1a';
+        var lightColor = style.getPropertyValue('--bg').trim() || '#f5f0e8';
+
+        QRCode.toCanvas(document.getElementById('qr-canvas'), vcard, {
+          width: 176,
+          margin: 2,
+          color: { dark: darkColor, light: lightColor }
+        });
+      })();
+    </script>
   </body>
 </html>
