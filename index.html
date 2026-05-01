@@ -19,8 +19,6 @@
         --rule: #d5cfc4;
         --link: #1a1a1a;
         --link-hover: #444444;
-        --feed-panel: #efe9df;
-        --feed-w: min(22rem, 36vw);
         --max: 32rem;
       }
 
@@ -32,7 +30,6 @@
         --rule: #2e2a24;
         --link: #e8e3da;
         --link-hover: #b8b0a4;
-        --feed-panel: #181410;
       }
 
       *,
@@ -49,103 +46,16 @@
       body {
         margin: 0;
         min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 1.5rem);
         font-family: "Inter", system-ui, -apple-system, sans-serif;
         line-height: 1.6;
         color: var(--text);
         background: var(--field);
         font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
         font-synthesis: none;
-      }
-
-      .main-shell {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 1.5rem);
-        padding-right: calc(var(--feed-w) + clamp(1rem, 4vw, 2rem));
-      }
-
-      .feed-panel {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: var(--feed-w);
-        height: 100vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-gutter: stable;
-        background: var(--feed-panel);
-        border-left: 1px solid var(--rule);
-      }
-
-      .feed-panel-inner {
-        padding: clamp(1.5rem, 4vw, 2.25rem)
-          clamp(1.15rem, 3.2vw, 1.5rem) clamp(2rem, 5vh, 2.75rem);
-        max-width: 100%;
-      }
-
-      .feed-kicker {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.62rem;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin: 0 0 1rem;
-      }
-
-      .feed-toggle {
-        display: flex;
-        gap: 0;
-        margin: 0 0 1.15rem;
-        border: 1px solid var(--rule);
-      }
-
-      .feed-toggle-btn {
-        flex: 1;
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.6rem;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 0.5rem 0.25rem;
-        border: none;
-        background: transparent;
-        color: var(--muted);
-        cursor: pointer;
-        transition: background 0.15s ease, color 0.15s ease;
-      }
-
-      .feed-toggle-btn + .feed-toggle-btn {
-        border-left: 1px solid var(--rule);
-      }
-
-      .feed-toggle-btn[aria-pressed="true"] {
-        background: color-mix(in srgb, var(--text) 7%, transparent);
-        color: var(--text);
-      }
-
-      .feed-summary {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.735rem;
-        font-weight: 400;
-        line-height: 1.65;
-        margin: 0;
-      }
-
-      .feed-meta {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.55rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin: 1.25rem 0 0;
-        line-height: 1.55;
-      }
-
-      .feed-summary.feed-summary--muted {
-        color: var(--muted);
       }
 
       main {
@@ -263,29 +173,10 @@
         margin: 0;
       }
 
-      @media (max-width: 900px) {
-        .main-shell {
-          padding-right: clamp(1rem, 3vw, 1.5rem);
-        }
-
-        .feed-panel {
-          position: relative;
-          width: 100%;
-          height: auto;
-          min-height: 0;
-          border-left: none;
-          border-top: 1px solid var(--rule);
-        }
-
-        .feed-panel-inner {
-          padding: clamp(1.75rem, 5vw, 2.25rem)
-            clamp(1rem, 4vw, 1.5rem) clamp(2.25rem, 6vw, 3rem);
-        }
-      }
-
       @media (max-width: 480px) {
-        .main-shell {
+        body {
           padding: 1.25rem;
+          align-items: center;
         }
 
         main {
@@ -301,8 +192,7 @@
     </script>
   </head>
   <body>
-    <div class="main-shell">
-      <main>
+    <main>
       <h1 class="site-title">Rommy Ghaly</h1>
       <p class="site-subtitle">VP, Data @ CircleCI<br>Brooklyn, NY</p>
       <hr class="hr" />
@@ -335,131 +225,7 @@
         <img src="data:image/png;base64,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" alt="vCard QR Code" width="176" height="176" style="display:block;image-rendering:pixelated;" />
         <p class="qr-label">Scan to save contact</p>
       </div>
-      </main>
-    </div>
-    <aside class="feed-panel" aria-label="Hacker News and Reddit digest">
-      <div class="feed-panel-inner">
-        <p class="feed-kicker">From the feeds</p>
-        <div class="feed-toggle" role="group" aria-label="Summary window">
-          <button type="button" class="feed-toggle-btn" data-period="day" aria-pressed="true">
-            Day
-          </button>
-          <button type="button" class="feed-toggle-btn" data-period="week" aria-pressed="false">
-            Week
-          </button>
-          <button type="button" class="feed-toggle-btn" data-period="month" aria-pressed="false">
-            Month
-          </button>
-        </div>
-        <p id="feed-summary-body" class="feed-summary feed-summary--muted"></p>
-        <p id="feed-summary-meta" class="feed-meta" aria-live="polite"></p>
-      </div>
-    </aside>
 
-    <script>
-      (function () {
-        var storageKey = "feed-summary-period";
-        var toggles = document.querySelectorAll(".feed-toggle-btn");
-        var bodyEl = document.getElementById("feed-summary-body");
-        var metaEl = document.getElementById("feed-summary-meta");
-
-        function setToggleUI(active) {
-          toggles.forEach(function (btn) {
-            var p = btn.getAttribute("data-period");
-            btn.setAttribute("aria-pressed", p === active ? "true" : "false");
-          });
-          try {
-            localStorage.setItem(storageKey, active);
-          } catch (e2) {}
-        }
-
-        try {
-          var stored = localStorage.getItem(storageKey);
-        } catch (e) {
-          stored = null;
-        }
-
-        var period =
-          stored === "week" || stored === "month" || stored === "day"
-            ? stored
-            : "day";
-
-        setToggleUI(period);
-        if (bodyEl) {
-          bodyEl.textContent = "Loading feed summary…";
-          bodyEl.classList.add("feed-summary--muted");
-        }
-        if (metaEl) metaEl.textContent = "";
-
-        var dataPromise = fetch("summaries.json", {
-          credentials: "same-origin",
-          cache: "no-cache",
-        })
-          .then(function (r) {
-            if (!r.ok) throw new Error("summaries HTTP " + r.status);
-            return r.json();
-          })
-          .catch(function (err) {
-            console.warn(err);
-            return null;
-          });
-
-        function formatUpdated(iso) {
-          try {
-            var d = new Date(iso);
-            if (!isFinite(d.valueOf())) return "";
-            var opts = {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-              hour: "numeric",
-              minute: "2-digit",
-            };
-            return d.toLocaleString(undefined, opts);
-          } catch (e3) {
-            return iso;
-          }
-        }
-
-        function render(data, active) {
-          if (!bodyEl || !metaEl) return;
-
-          if (!data || typeof data[active] !== "string") {
-            bodyEl.textContent =
-              "Summaries couldn’t load. Run node scripts/build-feed-summaries.mjs after pulling, or confirm summaries.json shipped with the Pages build.";
-            bodyEl.classList.add("feed-summary--muted");
-            metaEl.textContent = "";
-            return;
-          }
-
-          bodyEl.textContent = data[active];
-          bodyEl.classList.remove("feed-summary--muted");
-
-          var parts = [];
-          if (data.generatedAt) parts.push("Updated " + formatUpdated(data.generatedAt));
-          parts.push(
-            "HN + Reddit snapshots refresh with the nightly build; copy stays frozen until tomorrow’s export."
-          );
-          metaEl.textContent = parts.join(". ") + ".";
-        }
-
-        dataPromise.then(function (data) {
-          setToggleUI(period);
-          render(data, period);
-        });
-
-        toggles.forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            var p = btn.getAttribute("data-period");
-            if (!p || p === period) return;
-            period = p;
-            setToggleUI(period);
-            dataPromise.then(function (data) {
-              render(data, period);
-            });
-          });
-        });
-      })();
-    </script>
+    </main>
   </body>
 </html>
