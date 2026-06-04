@@ -12,7 +12,7 @@ Minimal personal landing page at [https://rommy.io](https://rommy.io). A single 
 
 - **Title:** Rommy Ghaly (IBM Plex Mono)
 - **Subtitle:** VP, Data @ CircleCI · Brooklyn, NY
-- **Links:** LinkedIn, GitHub, CircleCI, resume / cv — ruled rows with category labels and a centered `@` (resume row uses `/`)
+- **Links:** LinkedIn, GitHub, CircleCI, Resume / CV (PDF) — ruled rows with category labels and a centered `@`
 - **QR code:** Embedded PNG (vCard 4.0) for one-tap contact import on iOS/Android
 
 ## Stack
