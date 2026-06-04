@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rommy Ghaly — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f0e8;
+        --field: #1c1814;
+        --text: #1a1a1a;
+        --muted: #767676;
+        --rule: #d5cfc4;
+        --link: #1a1a1a;
+        --link-hover: #444444;
+        --max: min(52rem, 100%);
+      }
+
+      [data-theme="dark"] {
+        --bg: #1e1a16;
+        --field: #0a0907;
+        --text: #e8e3da;
+        --muted: #7a7268;
+        --rule: #2e2a24;
+        --link: #e8e3da;
+        --link-hover: #b8b0a4;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 106%;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 1.5rem);
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--field);
+        font-synthesis: none;
+      }
+
+      main {
+        width: 100%;
+        max-width: var(--max);
+        background: var(--bg);
+        border: 1px solid var(--rule);
+        padding: clamp(1.5rem, 4vw, 2rem) clamp(1.25rem, 4vw, 2rem)
+          clamp(2rem, 5vw, 2.75rem);
+      }
+
+      .back {
+        margin: 0 0 1.25rem;
+      }
+
+      .back a {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+
+      .back a:hover {
+        color: var(--link-hover);
+      }
+
+      .page-title {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 300;
+        margin: 0 0 0.35rem;
+        letter-spacing: 0.01em;
+      }
+
+      .page-meta {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.62rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1.25rem;
+      }
+
+      .page-meta a {
+        color: var(--muted);
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+      }
+
+      .page-meta a:hover {
+        color: var(--link);
+      }
+
+      .pdf-frame {
+        border: 1px solid var(--rule);
+        background: #fff;
+        min-height: min(75vh, 900px);
+        overflow: hidden;
+      }
+
+      [data-theme="dark"] .pdf-frame {
+        background: #fafafa;
+      }
+
+      .pdf-frame object,
+      .pdf-frame embed {
+        display: block;
+        width: 100%;
+        height: min(75vh, 900px);
+        border: 0;
+      }
+
+      .pdf-fallback {
+        padding: 2rem 1.5rem;
+        text-align: center;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .pdf-fallback a {
+        color: var(--link);
+      }
+
+      .pdf-missing {
+        display: none;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.72rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .pdf-missing.is-visible {
+        display: block;
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 1.25rem;
+        }
+
+        main {
+          padding: 1.25rem 1rem 1.75rem;
+        }
+
+        .pdf-frame object,
+        .pdf-frame embed {
+          height: 70vh;
+        }
+      }
+    </style>
+    <script>
+      (function () {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <p class="back"><a href="/">← Rommy Ghaly</a></p>
+      <h1 class="page-title">Resume</h1>
+      <p class="page-meta">
+        PDF ·
+        <a href="resume.pdf" download>Download</a>
+        ·
+        <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Open in new tab</a>
+      </p>
+
+      <div class="pdf-frame" id="pdf-frame">
+        <object
+          id="pdf-object"
+          data="resume.pdf"
+          type="application/pdf"
+          title="Rommy Ghaly resume PDF"
+        >
+          <embed src="resume.pdf" type="application/pdf" title="Rommy Ghaly resume PDF" />
+          <p class="pdf-fallback">
+            Your browser cannot display PDFs inline.
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Open resume.pdf</a>
+            or
+            <a href="resume.pdf" download>download it</a>.
+          </p>
+        </object>
+      </div>
+      <p class="pdf-missing" id="pdf-missing" role="status">
+        resume.pdf was not found. Export your resume from Kickresume as PDF, save it as
+        <code>resume.pdf</code> next to this page, then redeploy.
+      </p>
+    </main>
+
+    <script>
+      (function () {
+        fetch("resume.pdf", { method: "HEAD" })
+          .then(function (r) {
+            if (!r.ok) throw new Error("missing");
+          })
+          .catch(function () {
+            var frame = document.getElementById("pdf-frame");
+            var msg = document.getElementById("pdf-missing");
+            if (frame) frame.style.display = "none";
+            if (msg) msg.classList.add("is-visible");
+          });
+      })();
+    </script>
+  </body>
+</html>

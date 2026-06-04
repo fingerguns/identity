@@ -12,7 +12,7 @@ Minimal personal landing page at [https://rommy.io](https://rommy.io). A single 
 
 - **Title:** Rommy Ghaly (IBM Plex Mono)
 - **Subtitle:** VP, Data @ CircleCI · Brooklyn, NY
-- **Links:** LinkedIn, GitHub, CircleCI — ruled rows with category labels and a centered `@`
+- **Links:** LinkedIn, resume (PDF), GitHub, CircleCI — ruled rows with category labels and a centered `@`
 - **QR code:** Embedded PNG (vCard 4.0) for one-tap contact import on iOS/Android
 
 ## Stack
@@ -46,9 +46,19 @@ git push
 | File | Purpose |
 |------|---------|
 | `index.html` | Production page (deployed) |
+| `resume.html` | In-browser PDF viewer for the resume |
+| `resume.pdf` | Resume file (export from Kickresume; replace placeholder) |
 | `CNAME` | Custom domain for GitHub Pages |
 | `index-circleci.html` | Local-only theme experiments (not deployed) |
 | `index-terminal.html` | Local-only theme experiments (not deployed) |
+
+## Updating the resume PDF
+
+1. In Kickresume: **Download & Share** → download as **PDF**.
+2. Save the file as `resume.pdf` in this repo (overwrite the placeholder).
+3. Commit and push. The home page links to `/resume.html`, which embeds `resume.pdf`.
+
+Preview: [http://localhost:8080/resume.html](http://localhost:8080/resume.html) after starting a local server.
 
 ## Updating the vCard QR
 
